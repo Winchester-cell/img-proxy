@@ -23,10 +23,9 @@ app.get('/image-proxy', async (req, res) => {
     });
 
     const buffer = Buffer.from(response.data);
-    
-   
+
     const compressedImage = await sharp(buffer)
-      .jpeg({ quality }) 
+      .jpeg({ quality })
       .toBuffer();
 
     res.set('Content-Type', 'image/jpeg');
@@ -37,7 +36,4 @@ app.get('/image-proxy', async (req, res) => {
   }
 });
 
-const port = 5000;
-app.listen(port, () => {
-  console.log(`Proxy server is running on http://localhost:${port}`);
-});
+module.exports = app;
